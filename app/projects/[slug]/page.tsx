@@ -2,20 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Award, Calendar, MapPin, Ruler, Wallet } from "lucide-react";
-import { CustomCursor } from "@/components/CustomCursor";
 import { ThreeBackground } from "@/components/ThreeBackground";
 import { projects } from "@/data/projects";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
 }
 
-export function generateMetadata({ params }: Props) {
-  const project = projects.find((item) => item.slug === params.slug);
+export async function generateMetadata({ params }: Props) {
+  const { slug } = await params;
+  const project = projects.find((item) => item.slug === slug);
   if (!project) return {};
   return {
     title: project.title,
@@ -28,8 +28,9 @@ export function generateMetadata({ params }: Props) {
   };
 }
 
-export default function ProjectPage({ params }: Props) {
-  const project = projects.find((item) => item.slug === params.slug);
+export default async function ProjectPage({ params }: Props) {
+  const { slug } = await params;
+  const project = projects.find((item) => item.slug === slug);
   if (!project) notFound();
 
   const nextProject = projects[(projects.findIndex((item) => item.slug === project.slug) + 1) % projects.length];
@@ -49,7 +50,6 @@ export default function ProjectPage({ params }: Props) {
     <main className="min-h-screen overflow-hidden bg-noir text-bone">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <ThreeBackground />
-      <CustomCursor />
       <nav className="floating-nav">
         <Link href="/" className="magnetic-link">
           <ArrowLeft size={16} />

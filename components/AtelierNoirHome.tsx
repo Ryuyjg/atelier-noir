@@ -7,7 +7,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight, ChevronDown, Mail, MapPin, MoveHorizontal, Send } from "lucide-react";
-import { CustomCursor } from "@/components/CustomCursor";
 import { ThreeBackground } from "@/components/ThreeBackground";
 import { projects, testimonials } from "@/data/projects";
 
@@ -108,7 +107,6 @@ export function AtelierNoirHome() {
     <main className="overflow-hidden bg-noir text-bone">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(studioSchema) }} />
       <ThreeBackground />
-      <CustomCursor />
 
       <motion.div className="loader" animate={{ y: loading ? "0%" : "-110%" }} transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] }}>
         <div>

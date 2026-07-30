@@ -21,7 +21,6 @@ body {
     radial-gradient(circle at 70% 8%, rgba(216, 184, 116, 0.14), transparent 30rem),
     radial-gradient(circle at 12% 26%, rgba(162, 72, 56, 0.1), transparent 24rem),
     #050505;
-  cursor: none;
 }
 
 body::selection {
@@ -29,37 +28,8 @@ body::selection {
   color: #050505;
 }
 
-a,
-button,
-input,
-textarea,
-select {
-  cursor: none;
-}
-
 img {
   max-width: 100%;
-}
-
-.custom-cursor {
-  position: fixed;
-  left: -12px;
-  top: -12px;
-  z-index: 10000;
-  width: 24px;
-  height: 24px;
-  border: 1px solid rgba(216, 184, 116, 0.9);
-  border-radius: 999px;
-  pointer-events: none;
-  mix-blend-mode: difference;
-  transition: width 180ms ease, height 180ms ease, border-color 180ms ease, background 180ms ease;
-}
-
-.custom-cursor.is-active {
-  width: 54px;
-  height: 54px;
-  border-color: rgba(255, 255, 255, 0.35);
-  background: rgba(216, 184, 116, 0.12);
 }
 
 .loader {
@@ -810,22 +780,6 @@ img {
 }
 
 @media (max-width: 860px) {
-  body {
-    cursor: auto;
-  }
-
-  a,
-  button,
-  input,
-  textarea,
-  select {
-    cursor: pointer;
-  }
-
-  .custom-cursor {
-    display: none;
-  }
-
   .floating-nav {
     top: 10px;
     width: calc(100% - 20px);
