@@ -1,5 +1,9 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
 const isGithubPages = process.env.GITHUB_PAGES === "true";
 const repoName = "atelier-noir";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -15,6 +19,9 @@ const nextConfig = {
         hostname: "images.unsplash.com"
       }
     ]
+  },
+  turbopack: {
+    root: __dirname
   }
 };
 
